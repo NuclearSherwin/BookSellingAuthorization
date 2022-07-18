@@ -37,6 +37,12 @@
                 <input asp-for="Input.Address" class="form-control" />
                 <span asp-validation-for="Input.Address" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Input.Role"></label>
+                @Html.DropDownListFor(r => r.Input.Role, 
+                    Model.Input.RoleList, "--Select your role",
+                    new {@class="form-control"})   
+            </div>
             
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
