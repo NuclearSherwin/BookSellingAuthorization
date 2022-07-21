@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\phong\\RiderProjects\\bookselling\\bookselling\\bookselling.csproj": {}
+    "E:\\c#-projects\\asp-dotnet\\BookSellingAuthorization\\bookselling.csproj": {}
   },
   "projects": {
-    "C:\\Users\\phong\\RiderProjects\\bookselling\\bookselling\\bookselling.csproj": {
+    "E:\\c#-projects\\asp-dotnet\\BookSellingAuthorization\\bookselling.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\phong\\RiderProjects\\bookselling\\bookselling\\bookselling.csproj",
+        "projectUniqueName": "E:\\c#-projects\\asp-dotnet\\BookSellingAuthorization\\bookselling.csproj",
         "projectName": "bookselling",
-        "projectPath": "C:\\Users\\phong\\RiderProjects\\bookselling\\bookselling\\bookselling.csproj",
+        "projectPath": "E:\\c#-projects\\asp-dotnet\\BookSellingAuthorization\\bookselling.csproj",
         "packagesPath": "C:\\Users\\phong\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\phong\\RiderProjects\\bookselling\\bookselling\\obj\\",
+        "outputPath": "E:\\c#-projects\\asp-dotnet\\BookSellingAuthorization\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\phong\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\phong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -87,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

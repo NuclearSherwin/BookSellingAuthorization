@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tlrNn6tWT8nmROrCsHzZKc3QlINgIcb46u6GcR4UF322X0c8VGOFdLUwwjTXC659wBdeDOQ8cW+saNd62RsOyw==",
+  "dgSpecHash": "WDkEtUiMzS0AlS33cCjJp3ZCnx+VnkK/bjvaEbMzxHXXdlZT62beriCbc5lVoiRRfW83XCKpA5UDGkLtTWA+Ng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\phong\\RiderProjects\\bookselling\\bookselling\\bookselling.csproj",
+  "projectFilePath": "E:\\c#-projects\\asp-dotnet\\BookSellingAuthorization\\bookselling.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\phong\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\phong\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.17\\microsoft.aspnetcore.cryptography.internal.5.0.17.nupkg.sha512",
