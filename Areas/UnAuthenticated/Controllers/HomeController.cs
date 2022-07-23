@@ -10,7 +10,7 @@ using bookselling.Utils;
 
 namespace bookselling.Controllers
 {
-    [Area(SD.UnAuthenticated_Area)]
+    [Area(SD.UnAuthenticatedArea)]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

@@ -27,7 +27,7 @@ using bookselling.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"25bfd9ca9c43e06cee6d098f186c3f4cca31039c", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6bbd38947218ca5b99c65d3c289aae8abc99e0b3", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8ab98695125e30089891bfb21a24ed18171ce385", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ErrorViewModel>
     #nullable disable

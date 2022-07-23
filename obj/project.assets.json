@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "HeroiconsTagHelper/1.0.6": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/HeroiconsTagHelper.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/HeroiconsTagHelper.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -2147,6 +2159,24 @@
     }
   },
   "libraries": {
+    "HeroiconsTagHelper/1.0.6": {
+      "sha512": "lTQFnxBDdq/5emnTR7CP4XMJ+WiHehAb7h/gnokbiUTeqippz2HFeWz7JzCmXDXwXvXUC/nvQ8OZ6qU0uuQlBQ==",
+      "type": "package",
+      "path": "heroiconstaghelper/1.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Heroicons/LICENSE",
+        "LICENSE",
+        "README.md",
+        "heroiconstaghelper.1.0.6.nupkg.sha512",
+        "heroiconstaghelper.nuspec",
+        "lib/net5.0/HeroiconsTagHelper.dll",
+        "lib/net6.0/HeroiconsTagHelper.dll",
+        "lib/netcoreapp3.1/HeroiconsTagHelper.dll",
+        "logo.png"
+      ]
+    },
     "Humanizer.Core/2.8.26": {
       "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "type": "package",
@@ -7484,6 +7514,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "HeroiconsTagHelper >= 1.0.6",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 5.0.17",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.17",
       "Microsoft.AspNetCore.Identity.UI >= 5.0.17",
@@ -7532,6 +7563,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "HeroiconsTagHelper": {
+            "target": "Package",
+            "version": "[1.0.6, )"
+          },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.17, )"

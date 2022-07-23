@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "WDkEtUiMzS0AlS33cCjJp3ZCnx+VnkK/bjvaEbMzxHXXdlZT62beriCbc5lVoiRRfW83XCKpA5UDGkLtTWA+Ng==",
+  "dgSpecHash": "oGUZdmujtaBPhzT9gCYsg3g86+XG8TvX1DyAco9ee8INGzGWPuzI4xCF2AQ/XtojgSkEQm6YxC0AEx/GcXlefg==",
   "success": true,
   "projectFilePath": "E:\\c#-projects\\asp-dotnet\\BookSellingAuthorization\\bookselling.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\phong\\.nuget\\packages\\heroiconstaghelper\\1.0.6\\heroiconstaghelper.1.0.6.nupkg.sha512",
     "C:\\Users\\phong\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\phong\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.17\\microsoft.aspnetcore.cryptography.internal.5.0.17.nupkg.sha512",
     "C:\\Users\\phong\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.17\\microsoft.aspnetcore.cryptography.keyderivation.5.0.17.nupkg.sha512",

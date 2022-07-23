@@ -410,3 +410,6 @@ E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\refint\books
 E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\bookselling.pdb
 E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\bookselling.genruntimeconfig.cache
 E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\ref\bookselling.dll
+E:\c#-projects\asp-dotnet\BookSellingAuthorization\bin\Debug\net5.0\HeroiconsTagHelper.dll
+E:\c#-projects\asp-dotnet\BookSellingAuthorization\bin\Debug\net5.0\package-lock.json
+E:\c#-projects\asp-dotnet\BookSellingAuthorization\bin\Debug\net5.0\package.json

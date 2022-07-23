@@ -33,6 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "bookselling/1.0.0": {
         "dependencies": {
+          "HeroiconsTagHelper": "1.0.6",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "5.0.17",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17",
           "Microsoft.AspNetCore.Identity.UI": "5.0.17",
@@ -322,6 +323,17 @@
         },
         "compile": {
           "bookselling.dll": {}
+        }
+      },
+      "HeroiconsTagHelper/1.0.6": {
+        "runtime": {
+          "lib/net5.0/HeroiconsTagHelper.dll": {
+            "assemblyVersion": "1.0.6.0",
+            "fileVersion": "1.0.6.0"
+          }
+        },
+        "compile": {
+          "lib/net5.0/HeroiconsTagHelper.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -3590,6 +3602,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "HeroiconsTagHelper/1.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lTQFnxBDdq/5emnTR7CP4XMJ+WiHehAb7h/gnokbiUTeqippz2HFeWz7JzCmXDXwXvXUC/nvQ8OZ6qU0uuQlBQ==",
+      "path": "heroiconstaghelper/1.0.6",
+      "hashPath": "heroiconstaghelper.1.0.6.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
