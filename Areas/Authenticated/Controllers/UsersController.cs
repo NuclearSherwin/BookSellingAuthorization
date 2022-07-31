@@ -22,13 +22,14 @@ namespace bookselling.Controllers
         private readonly RoleManager<IdentityRole> _roleManger;
 
         // GET
-        public UsersController(ApplicationDbContext db, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UsersController(ApplicationDbContext db, UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _db = db;
             _userManager = userManager;
             _roleManger = roleManager;
         }
-        
+
         public async Task<IActionResult> Index()
         {
             // taking current login user id
@@ -49,9 +50,9 @@ namespace bookselling.Controllers
             return View(userList.ToList());
         }
 
-        
+
         // lock and unlock
-        
+
         [HttpGet]
         public async Task<IActionResult> LockUnlock(string id)
         {
@@ -73,8 +74,8 @@ namespace bookselling.Controllers
             _db.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
-        
-        
+
+
         [HttpGet]
         public async Task<IActionResult> Delete(string id)
         {
@@ -99,8 +100,8 @@ namespace bookselling.Controllers
 
             return View(confirmEmailVm);
         }
-        
-        
+
+
         [HttpGet]
         [Authorize(Roles = SD.AdminRole)]
         public async Task<IActionResult> ResetPassword(string token, string email)
@@ -116,7 +117,7 @@ namespace bookselling.Controllers
             return View(resetPasswordViewModel);
         }
 
-        
+
         [HttpPost]
         [Authorize(Roles = SD.AdminRole)]
         public async Task<IActionResult> ConfirmEmail(ConfirmEmailVm confirmEmailVm)
@@ -135,7 +136,7 @@ namespace bookselling.Controllers
 
             return View(confirmEmailVm);
         }
-        
+
         [HttpPost]
         [Authorize(Roles = SD.AdminRole)]
         public async Task<IActionResult> ResetPassword(ResetPasswordViewModel resetPasswordViewModel)
@@ -153,8 +154,8 @@ namespace bookselling.Controllers
 
             return View(resetPasswordViewModel);
         }
-        
-        
+
+
         [HttpGet]
         public IActionResult EditAdminStoreOwnerCustomer(string id)
         {
@@ -177,7 +178,7 @@ namespace bookselling.Controllers
 
             return View(applicationUser);
         }
-        
+
         public async Task<IActionResult> Edit(string id)
         {
             var user = _db.ApplicationUsers.Find(id);
@@ -186,6 +187,5 @@ namespace bookselling.Controllers
 
             return RedirectToAction("EditAdminStoreOwnerCustomer", new { id });
         }
-        
     }
 }

@@ -10,7 +10,7 @@ namespace bookselling.Controllers
 {
     [Area(SD.AuthenticatedArea)]
     [Authorize(Roles = SD.StoreOwnerRole)]
-    public class CategoriesController: Controller
+    public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _db;
 
@@ -39,24 +39,21 @@ namespace bookselling.Controllers
             _db.SaveChanges();
 
             return RedirectToAction(nameof(Index));
-
         }
-        
-        
-        
+
+
         // -----------------UPSERT------------------
         [Authorize(Roles = SD.StoreOwnerRole)]
         [HttpGet]
         public IActionResult Upsert(int? id)
         {
             if (id == null) return View(new Category());
-            
+
             var category = _db.Categories.Find(id);
             return View(category);
-
         }
 
-        
+
         [Authorize(Roles = SD.StoreOwnerRole)]
         [HttpPost]
         public IActionResult Upsert(Category category)
@@ -76,6 +73,5 @@ namespace bookselling.Controllers
 
             return View(category);
         }
-
     }
 }

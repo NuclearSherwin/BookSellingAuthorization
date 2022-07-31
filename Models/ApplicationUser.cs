@@ -5,10 +5,14 @@ using Microsoft.AspNetCore.Identity;
 
 namespace bookselling.Models
 {
-    public class ApplicationUser: IdentityUser 
+    public class ApplicationUser : IdentityUser
     {
-        [Required]
-        public string FullName { get; set; }
+        public ApplicationUser()
+        {
+            CreatedAt = DateTime.Now;
+        }
+
+        [Required] public string FullName { get; set; }
         [Required] public string Address { get; set; }
         [NotMapped] public string Role { get; set; }
 
@@ -18,10 +22,5 @@ namespace bookselling.Models
         public DateTime UpdatedAt { get; set; }
         public string UpdatedBy { get; set; }
         public bool IsDelete { get; set; }
-
-        public ApplicationUser()
-        {
-            CreatedAt = DateTime.Now;
-        }
     }
 }

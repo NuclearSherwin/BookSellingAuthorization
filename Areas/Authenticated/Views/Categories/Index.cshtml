@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-@model IEnumerable<bookselling.Models.Category>
+@model IEnumerable<Category>
 
 @{
     Layout = "_Layout";
@@ -10,21 +10,23 @@
         <h1>Category Table</h1>
     </div>
     <div class="col-6">
-        <a asp-area="Authenticated" asp-controller="Categories" 
-           asp-action="Upsert" 
-           class="btn btn-outline-success">Add new category</a>
+        <a asp-area="Authenticated" asp-controller="Categories"
+           asp-action="Upsert"
+           class="btn btn-outline-success">
+            <i class="fa-solid fa-plus"></i>
+        </a>
     </div>
 </div>
+<div>
+    <form class="form-inline my-2 my-lg-0 float-right">
+        <div class="p-3">
+            <i class="fa-brands fa-searchengin"></i>
+        </div>
+        <input id="myInput" class="form-control mr-sm-2"
+               type="text" placeholder="Search">
+    </form>
+</div>
 <table class="table">
-
-    <div>
-        <form class="form-inline my-2 my-lg-0 float-right">
-            <input id="myInput" class="form-control mr-sm-2" 
-                   type="text" placeholder="Search">
-        </form>
-    </div>
-
-
     <thead id="tbHead">
     <tr>
         <th scope="col">#</th>
@@ -41,8 +43,10 @@
             <td>@category.Name</td>
             <td>@category.Description</td>
             <td>
-                <a asp-controller="Categories" asp-action="Upsert" 
-                   asp-route-id="@category.Id" class="btn btn-outline-warning">Update</a>
+                <a asp-controller="Categories" asp-action="Upsert"
+                   asp-route-id="@category.Id" class="btn btn-outline-warning">
+                    Update
+                </a>
                 <a asp-controller="Categories" asp-action="Delete"
                    onclick="return confirm('Are you sure to delete this category')"
                    asp-route-id="@category.Id" class="btn btn-outline-danger">

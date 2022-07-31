@@ -21,7 +21,7 @@ namespace bookselling.Controllers
         {
             _db = db;
         }
-        
+
         // GET
         // --------------------INDEX-------------------
         [HttpGet]
@@ -31,8 +31,7 @@ namespace bookselling.Controllers
             return View(books);
         }
 
-        
-        
+
         // -------------------DELETE--------------------
         [HttpGet]
         public IActionResult Delete(int id)
@@ -44,8 +43,8 @@ namespace bookselling.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-        
-        
+
+
         // -------------------UPSERT----------------------
         [HttpGet]
         public IActionResult Upsert(int? id)
@@ -63,15 +62,11 @@ namespace bookselling.Controllers
 
             var book = _db.Books.Find(id);
             bookVm.Book = book;
-            
+
             return View(bookVm);
         }
 
-        
-        // method for category select list VM
-      
 
-        
         [HttpPost]
         public IActionResult Upsert(BookVm bookVm)
         {
@@ -88,13 +83,14 @@ namespace bookselling.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            
+
             // provide data for the categories list
             bookVm.Categories = CategorySelectListItems();
-            
+
             return View(bookVm);
         }
-        
+
+        // method for category select list VM
         private IEnumerable<SelectListItem> CategorySelectListItems()
         {
             var categories = _db.Categories.ToList();
