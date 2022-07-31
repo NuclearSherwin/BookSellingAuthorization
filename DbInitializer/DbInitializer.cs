@@ -2,6 +2,7 @@
 using System.Linq;
 using bookselling.Data;
 using bookselling.Models;
+using bookselling.Utils;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,14 +41,14 @@ namespace bookselling.DbInitializer
             
             
             // checking in table Role, if yes then return, if not deploy the codes after these conditions
-            if (_db.Roles.Any(r => r.Name == "StoreOwner")) return;
-            if (_db.Roles.Any(r => r.Name == "Customer")) return;
-            if (_db.Roles.Any(r => r.Name == "Admin")) return;
+            if (_db.Roles.Any(r => r.Name == SD.AdminRole)) return;
+            if (_db.Roles.Any(r => r.Name == SD.StoreOwnerRole)) return;
+            if (_db.Roles.Any(r => r.Name == SD.CustomerRole)) return;
             
             // this will deploy if there no have any role yet
-            _roleMananger.CreateAsync(new IdentityRole("StoreOwner")).GetAwaiter().GetResult();
-            _roleMananger.CreateAsync(new IdentityRole("Customer")).GetAwaiter().GetResult();
-            _roleMananger.CreateAsync(new IdentityRole("Admin")).GetAwaiter().GetResult();
+            _roleMananger.CreateAsync(new IdentityRole(SD.AdminRole)).GetAwaiter().GetResult();
+            _roleMananger.CreateAsync(new IdentityRole(SD.StoreOwnerRole)).GetAwaiter().GetResult();
+            _roleMananger.CreateAsync(new IdentityRole(SD.CustomerRole)).GetAwaiter().GetResult();
             
             // create user admin
             _userManager.CreateAsync(new ApplicationUser()
@@ -64,7 +65,7 @@ namespace bookselling.DbInitializer
             ApplicationUser admin = _db.ApplicationUsers.Where(a => a.Email == "admin@gmail.com").FirstOrDefault();
             
             // add that user (admin) to admin role
-            _userManager.AddToRoleAsync(admin, "Admin").GetAwaiter().GetResult();
+            _userManager.AddToRoleAsync(admin, SD.AdminRole).GetAwaiter().GetResult();
         }
     }
 }

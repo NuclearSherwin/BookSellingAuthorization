@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace bookselling.Controllers
 {
     [Area(SD.AuthenticatedArea)]
-    [Authorize(SD.AdminRole)]
+    [Authorize(Roles = SD.AdminRole)]
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -102,7 +102,7 @@ namespace bookselling.Controllers
         
         
         [HttpGet]
-        [Authorize(SD.AdminRole)]
+        [Authorize(Roles = SD.AdminRole)]
         public async Task<IActionResult> ResetPassword(string token, string email)
         {
             if (token == null || email == null) ModelState.AddModelError("", "Invalid password reset token");
@@ -118,7 +118,7 @@ namespace bookselling.Controllers
 
         
         [HttpPost]
-        [Authorize(SD.AdminRole)]
+        [Authorize(Roles = SD.AdminRole)]
         public async Task<IActionResult> ConfirmEmail(ConfirmEmailVm confirmEmailVm)
         {
             if (ModelState.IsValid)
@@ -137,7 +137,7 @@ namespace bookselling.Controllers
         }
         
         [HttpPost]
-        [Authorize(SD.AdminRole)]
+        [Authorize(Roles = SD.AdminRole)]
         public async Task<IActionResult> ResetPassword(ResetPasswordViewModel resetPasswordViewModel)
         {
             if (ModelState.IsValid)
@@ -186,7 +186,6 @@ namespace bookselling.Controllers
 
             return RedirectToAction("EditAdminStoreOwnerCustomer", new { id });
         }
-
-
+        
     }
 }

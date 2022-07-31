@@ -1,0 +1,69 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<bookselling.Models.Category>
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-6">
+        <h1>Category Table</h1>
+    </div>
+    <div class="col-6">
+        <a asp-area="Authenticated" asp-controller="Categories" 
+           asp-action="Upsert" 
+           class="btn btn-outline-success">Add new category</a>
+    </div>
+</div>
+<table class="table">
+
+    <div>
+        <form class="form-inline my-2 my-lg-0 float-right">
+            <input id="myInput" class="form-control mr-sm-2" 
+                   type="text" placeholder="Search">
+        </form>
+    </div>
+
+
+    <thead id="tbHead">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody id="tblData">
+    @foreach (var category in Model)
+    {
+        <tr>
+            <th scope="row">@category.Id</th>
+            <td>@category.Name</td>
+            <td>@category.Description</td>
+            <td>
+                <a asp-controller="Categories" asp-action="Upsert" 
+                   asp-route-id="@category.Id" class="btn btn-outline-warning">Update</a>
+                <a asp-controller="Categories" asp-action="Delete"
+                   onclick="return confirm('Are you sure to delete this category')"
+                   asp-route-id="@category.Id" class="btn btn-outline-danger">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                
+                $("#tblData tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}

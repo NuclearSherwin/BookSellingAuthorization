@@ -413,3 +413,9 @@ E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\ref\booksell
 E:\c#-projects\asp-dotnet\BookSellingAuthorization\bin\Debug\net5.0\HeroiconsTagHelper.dll
 E:\c#-projects\asp-dotnet\BookSellingAuthorization\bin\Debug\net5.0\package-lock.json
 E:\c#-projects\asp-dotnet\BookSellingAuthorization\bin\Debug\net5.0\package.json
+E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\Razor\Areas\Authenticated\Views\Categories\Index.cshtml.g.cs
+E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\Razor\Areas\Authenticated\Views\Categories\Upsert.cshtml.g.cs
+E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\Razor\Areas\Authenticated\Views\_ViewImports.cshtml.g.cs
+E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\Razor\Areas\Authenticated\Views\_ViewStart.cshtml.g.cs
+E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\Razor\Areas\Authenticated\Views\Books\Index.cshtml.g.cs
+E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\Razor\Areas\Authenticated\Views\Books\Upsert.cshtml.g.cs

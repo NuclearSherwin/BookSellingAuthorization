@@ -21,10 +21,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Areas\Authenticated\Views" />
-    </ItemGroup>
-
-    <ItemGroup>
       <_ContentIncludedByDefault Remove="Areas\UnAuthenticated\Views\Shared\Error.cshtml" />
       <_ContentIncludedByDefault Remove="Areas\UnAuthenticated\Views\Shared\_Layout.cshtml" />
       <_ContentIncludedByDefault Remove="Areas\UnAuthenticated\Views\Shared\_LoginPartial.cshtml" />
