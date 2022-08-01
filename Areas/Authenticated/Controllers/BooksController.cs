@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using bookselling.Data;
 using bookselling.Models;
 using bookselling.Utils;
 using bookselling.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,10 +19,14 @@ namespace bookselling.Controllers
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly IWebHostEnvironment _environment;
 
-        public BooksController(ApplicationDbContext db)
+
+        // IWebHostEnvironment will help you take the image path
+        public BooksController(ApplicationDbContext db, IWebHostEnvironment environment)
         {
             _db = db;
+            _environment = environment;
         }
 
         // GET
@@ -70,24 +77,64 @@ namespace bookselling.Controllers
         [HttpPost]
         public IActionResult Upsert(BookVm bookVm)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if (bookVm.Book.Id == 0)
-                {
-                    _db.Books.Add(bookVm.Book);
-                }
-                else
-                    _db.Books.Update(bookVm.Book);
+                // if (bookVm.Book.Id == 0)
+                //     _db.Books.Add(bookVm.Book);
+                // else
+                //     _db.Books.Update(bookVm.Book);
+                //
+                // _db.SaveChanges();
+                //
+                // return RedirectToAction(nameof(Index));
 
-                _db.SaveChanges();
-
-                return RedirectToAction(nameof(Index));
+                bookVm.Categories = CategorySelectListItems();
+                return View(bookVm);
             }
 
-            // provide data for the categories list
-            bookVm.Categories = CategorySelectListItems();
+            var webRootPath = _environment.WebRootPath;
+            var files = HttpContext.Request.Form.Files;
+            if (files.Count > 0)
+            {
+                var fileName = Guid.NewGuid();
+                var uploads = Path.Combine(webRootPath, @"images/products");
+                var extension = Path.GetExtension(files[0].FileName);
+                if (bookVm.Book.Id != 0)
+                {
+                    var productDb = _db.Books.AsNoTracking().Where(b => b.Id == bookVm.Book.Id).First();
+                    if (productDb.ImgPath != null && bookVm.Book.Id != 0)
+                    {
+                        var imagePath = Path.Combine(webRootPath, productDb.ImgPath.TrimStart('/'));
+                        if (System.IO.File.Exists(imagePath)) System.IO.File.Delete(imagePath);
+                    }
+                }
 
-            return View(bookVm);
+                using (var filesStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                {
+                    files[0].CopyTo(filesStreams);
+                }
+
+                bookVm.Book.ImgPath = @"/images/products/" + fileName + extension;
+            }
+
+            else
+            {
+                bookVm.Categories = CategorySelectListItems();
+                return View(bookVm);
+            }
+
+
+            if (bookVm.Book.Id == 0 || bookVm.Book.Id == null)
+                _db.Books.Add(bookVm.Book);
+            else
+                _db.Books.Update(bookVm.Book);
+
+            _db.SaveChanges();
+
+            // provide data for the categories list
+            // bookVm.Categories = CategorySelectListItems();
+
+            return RedirectToAction(nameof(Index));
         }
 
         // method for category select list VM

@@ -6,11 +6,19 @@
 }
 
 <h1>@title</h1>
-<form method="post">
+<form method="post" asp-controller="Books" asp-action="Upsert" enctype="multipart/form-data">
     <input asp-for="Book.Id" class="form-control" hidden>
+    <div class="form-group">
+        <label>Image</label>
+        <input type="file" name="files" multiple class="form-control" value="@Model.Book.ImgPath">
+        <span asp-validation-for="Book.ImgPath" class="text-danger"></span>
+    </div>
+    <div class="row justify-content-center">
+        <img src="@Model.Book.ImgPath" width="20%" style="border-radius: 5px" border: solid green/>
+    </div>
     <div class="mb-3">
         <label asp-for="Book.Name" class="form-label"></label>
-        <input asp-for="Book.Name" class="form-control">
+        <input asp-for="Book.Name" class="form-con  trol">
         <span asp-validation-for="Book.Name" class="text-danger"></span>
     </div>
     <div class="mb-3">
@@ -22,6 +30,16 @@
         <label asp-for="Book.Price" class="form-label"></label>
         <input asp-for="Book.Price" class="form-control">
         <span asp-validation-for="Book.Price" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Book.Author" class="form-label"></label>
+        <input asp-for="Book.Author" class="form-control">
+        <span asp-validation-for="Book.Author" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Book.NoPage" class="form-label"></label>
+        <input asp-for="Book.NoPage" class="form-control">
+        <span asp-validation-for="Book.NoPage" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label asp-for="Book.CategoryId" class="form-label"></label>
