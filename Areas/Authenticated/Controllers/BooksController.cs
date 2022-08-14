@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using bookselling.Data;
+﻿using bookselling.Data;
 using bookselling.Models;
 using bookselling.Utils;
 using bookselling.ViewModels;
@@ -11,6 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace bookselling.Controllers
 {

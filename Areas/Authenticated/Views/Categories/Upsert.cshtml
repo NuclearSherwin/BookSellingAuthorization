@@ -21,3 +21,15 @@
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
+
+<div class="mt-5">
+    <h2>Other options</h2>
+    <div class="d-flex mt-2">
+        <h6>Upload by excel file</h6>
+        <form asp-controller="Categories" asp-action="UploadExcel" method="post" enctype="multipart/form-data"
+              asp-antiforgery="false">
+            <input type="file" name="file"/>
+            <input type="submit" name="Submit" class="btn btn-primary"/>
+        </form>
+    </div>
+</div>
