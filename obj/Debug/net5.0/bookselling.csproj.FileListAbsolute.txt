@@ -419,3 +419,4 @@ E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\Razor\Areas\
 E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\Razor\Areas\Authenticated\Views\_ViewStart.cshtml.g.cs
 E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\Razor\Areas\Authenticated\Views\Books\Index.cshtml.g.cs
 E:\c#-projects\asp-dotnet\BookSellingAuthorization\obj\Debug\net5.0\Razor\Areas\Authenticated\Views\Books\Upsert.cshtml.g.cs
+E:\c#-projects\asp-dotnet\BookSellingAuthorization\bin\Debug\net5.0\ExcelDataReader.dll

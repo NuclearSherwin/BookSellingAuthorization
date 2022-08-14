@@ -96,8 +96,6 @@ namespace bookselling.Controllers
             }
 
             // storing file
-
-
             string fileName = Path.GetFileName(file.FileName);
             string filePath = Path.Combine(file.FileName);
 

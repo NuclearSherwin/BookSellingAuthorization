@@ -2,8 +2,10 @@
 using bookselling.Models;
 using bookselling.Utils;
 using bookselling.ViewModels;
+using ExcelDataReader;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -150,6 +152,52 @@ namespace bookselling.Controllers
             });
 
             return result;
+        }
+
+        // Upload Book
+        public IActionResult UploadExcel(IFormFile file)
+        {
+            if (file == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            var path = Path.Combine(_environment.WebRootPath, "uploads");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            string fileName = Path.GetFileName(file.FileName);
+            string filePath = Path.Combine(path, fileName);
+
+            using (FileStream stream = new FileStream(filePath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            using var streamFile = System.IO.File.Open(filePath, FileMode.Open, FileAccess.Read);
+            using var reader = ExcelReaderFactory.CreateReader(streamFile);
+
+            while (reader.Read())
+            {
+                var book = new Book()
+                {
+                    Name = reader.GetValue(0).ToString(),
+                    Description = reader.GetValue(1).ToString(),
+                    Price = Convert.ToDouble(reader.GetValue(2).ToString()),
+                    CategoryId = Convert.ToInt32(reader.GetValue(3).ToString()),
+                    Author = reader.GetValue(4).ToString(),
+                    NoPage = Convert.ToInt32(reader.GetValue(5).ToString()),
+                    ImgPath = reader.GetValue(6).ToString(),
+                };
+
+                _db.Books.Add(book);
+            }
+
+            _db.SaveChanges();
+            return RedirectToAction(nameof(Index));
+
         }
     }
 }
