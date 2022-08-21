@@ -178,15 +178,22 @@ namespace bookselling.Controllers
 
             using var streamFile = System.IO.File.Open(filePath, FileMode.Open, FileAccess.Read);
             using var reader = ExcelReaderFactory.CreateReader(streamFile);
-
+            
+            
             while (reader.Read())
             {
+                var category = _db.Categories.FirstOrDefault(c => c.Name == reader.GetValue(3).ToString());
+                if (category == null)
+                { 
+                    continue;
+                }
+                
                 var book = new Book()
                 {
                     Name = reader.GetValue(0).ToString(),
                     Description = reader.GetValue(1).ToString(),
                     Price = Convert.ToDouble(reader.GetValue(2).ToString()),
-                    CategoryId = Convert.ToInt32(reader.GetValue(3).ToString()),
+                    CategoryId = category.Id,
                     Author = reader.GetValue(4).ToString(),
                     NoPage = Convert.ToInt32(reader.GetValue(5).ToString()),
                     ImgPath = reader.GetValue(6).ToString(),
@@ -199,5 +206,6 @@ namespace bookselling.Controllers
             return RedirectToAction(nameof(Index));
 
         }
+        
     }
 }
