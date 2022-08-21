@@ -8,8 +8,14 @@ namespace bookselling.Models
         [Key] public int Id { get; set; }
         [Required] public string CustomerId { get; set; }
         [Required] public int BookId { get; set; }
+        [Required] public int Count { get; set; }
 
         [ForeignKey("CustomerId")] private ApplicationUser ApplicationUser { get; set; }
         [ForeignKey("BookId")] public Book Book { get; set; }
+
+        public Cart()
+        {
+            Count = 1;
+        }
     }
 }
