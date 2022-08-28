@@ -46,6 +46,12 @@ namespace bookselling
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
             });
             services.AddHeroicons(Configuration);
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Thòi gian cookie hiệu lực
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
         }
 
@@ -71,6 +77,7 @@ namespace bookselling
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
             
             dbInitializer.Initializer();
 

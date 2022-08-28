@@ -1,4 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Http
+@using bookselling.Utils
+@inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +30,19 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            @if (User.IsInRole("Customer"))
+                            {
+                                var count = HttpContextAccessor.HttpContext.Session.GetInt32(SD.ssShoppingCart) ?? 0;
+                                <li style="color: white">
+                                    <a asp-area="" asp-controller="" asp-action="" class="nav-link">
+                                        <i class="fa-brands fa-opencart"></i> &nbsp; (@count)
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Authenticated" asp-controller="Users" asp-action="Index">User</a>
                     </li>
@@ -53,7 +69,7 @@
         &copy; 2022 - bookselling - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
 </footer>
-<script src="https://kit.fontawesome.com/823e15a3c8.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/86e73494e1.js" crossorigin="anonymous"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
