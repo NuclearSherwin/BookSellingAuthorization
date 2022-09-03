@@ -82,38 +82,11 @@ namespace bookselling.Controllers
         public IActionResult Detail(Cart cartObject)
         {
             cartObject.Id = 0;
-            if (ModelState.IsValid)
-            {
-                var claimsIdentity = (ClaimsIdentity)User.Identity;
-                var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-                cartObject.CustomerId = claim.Value;
-
-                Cart cartFromDb = _dbContext.Carts
-                    .FirstOrDefault(c => c.CustomerId == cartObject.CustomerId && c.BookId == cartObject.BookId);
-
-                if (cartFromDb == null)
-                {
-                    _dbContext.Add(cartObject);
-                }
-                else
-                {
-                    cartFromDb.Count += cartObject.Count;
-                    _dbContext.Update(cartFromDb);
-                }
-
-                _dbContext.SaveChanges();
-
-                // count product through session
-                var count = _dbContext.Carts
-                    .Where(c => c.CustomerId == cartObject.CustomerId)
-                    .ToList().Count();
-                
-                HttpContext.Session.SetInt32(SD.ssShoppingCart, count);
-
-                return RedirectToAction(nameof(Index));
-            }
-
-            else
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            cartObject.CustomerId = claim.Value;
+            
+            if (cartObject.CustomerId == null || cartObject.BookId == null)
             {
                 var productFromDb = _dbContext.Books
                     .Include(a => a.Category)
@@ -125,6 +98,31 @@ namespace bookselling.Controllers
                 };
                 return View(cart);
             }
+           
+
+            Cart cartFromDb = _dbContext.Carts
+                .FirstOrDefault(c => c.CustomerId == cartObject.CustomerId && c.BookId == cartObject.BookId);
+
+            if (cartFromDb == null)
+            {
+                _dbContext.Add(cartObject);
+            }
+            else
+            {
+                cartFromDb.Count += cartObject.Count;
+                _dbContext.Update(cartFromDb);
+            }
+
+            _dbContext.SaveChanges();
+
+            // count product through session
+            var count = _dbContext.Carts
+                .Where(c => c.CustomerId == cartObject.CustomerId)
+                .ToList().Count();
+            
+            HttpContext.Session.SetInt32(SD.ssShoppingCart, count);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

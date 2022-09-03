@@ -12,6 +12,7 @@ namespace bookselling.Models
 
         [ForeignKey("CustomerId")] private ApplicationUser ApplicationUser { get; set; }
         [ForeignKey("BookId")] public Book Book { get; set; }
+        [NotMapped] public double Price { get; set; }
 
         public Cart()
         {
