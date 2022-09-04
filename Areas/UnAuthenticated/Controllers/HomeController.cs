@@ -45,7 +45,7 @@ namespace bookselling.Controllers
 
             var productList = products.Skip(id * numberOfPages).Take(_recordsPerPage).ToList();
 
-                
+            ViewData["Message"] = "Welcome!";    
             return View(productList);
         }
 
@@ -106,13 +106,16 @@ namespace bookselling.Controllers
             if (cartFromDb == null)
             {
                 _dbContext.Add(cartObject);
+                ViewData["Message"] = "Order successfully!";
             }
             else
             {
                 cartFromDb.Count += cartObject.Count;
                 _dbContext.Update(cartFromDb);
+                
             }
 
+            
             _dbContext.SaveChanges();
 
             // count product through session

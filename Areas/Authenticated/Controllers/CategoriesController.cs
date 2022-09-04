@@ -67,9 +67,11 @@ namespace bookselling.Controllers
                 if (category.Id == 0)
                 {
                     _db.Categories.Add(category);
+                    ViewData["Message"] = "Add successfully";
                 }
                 else
                     _db.Categories.Update(category);
+                ViewData["Message"] = "Update successfully";
 
                 _db.SaveChanges();
                 return RedirectToAction(nameof(Index));
