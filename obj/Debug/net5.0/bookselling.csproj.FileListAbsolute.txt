@@ -639,3 +639,5 @@ E:/c#-projects/asp-dotnet/BookSellingAuthorization/obj/Debug/net5.0/Razor/Areas/
 /home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/obj/Debug/net5.0/bookselling.pdb
 /home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/obj/Debug/net5.0/bookselling.genruntimeconfig.cache
 /home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/obj/Debug/net5.0/Razor/Areas/Authenticated/Views/Carts/Index.cshtml.g.cs
+/home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/obj/Debug/net5.0/Razor/Areas/Authenticated/Views/Carts/Summary.cshtml.g.cs
+/home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/obj/Debug/net5.0/Razor/Areas/Authenticated/Views/Carts/OrderConfirmation.cshtml.g.cs
