@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using bookselling.Data;
 using bookselling.DbInitializer;
 using bookselling.Utils;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -41,7 +42,7 @@ namespace bookselling
             services.AddScoped<IDbInitializer, DbInitializer.DbInitializer>();
             services.AddOptions();
 
-            var mailsettings = Configuration.GetSection("MailSetting");
+            var mailsettings = Configuration.GetSection("MailSettings");
             services.Configure<MailSetting>(mailsettings);
             services.AddTransient<ISendMailService, SendMailService>();
 
@@ -94,7 +95,29 @@ namespace bookselling
                     name: "default",
                     "{area=UnAuthenticated}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                
+                // endpoints.MapGet ("/", async context => {
+                //     await context.Response.WriteAsync ("Hello World!");
+                // });
+
+                endpoints.MapGet("/testmail", async context => {
+                
+                    // Lấy dịch vụ sendmailservice
+                    var sendmailservice = context.RequestServices.GetService<ISendMailService>();
+                
+                    MailContent content = new MailContent {
+                        To = "phongspacenasa@gmail.com",
+                        Subject = "TestMail",
+                        Body = "<p><strong>Hi Phong</strong></p>"
+                    };
+                
+                    await sendmailservice.SendMail(content);
+                    await context.Response.WriteAsync("Send mail");
+                });
+                
             });
+            
+            
         }
     }
 }

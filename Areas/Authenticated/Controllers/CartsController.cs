@@ -18,10 +18,12 @@ namespace bookselling.Controllers
     public class CartsController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly ISendMailService _emailSender;
 
-        public CartsController(ApplicationDbContext db)
+        public CartsController(ApplicationDbContext db, ISendMailService emailSender)
         {
             _db = db;
+            _emailSender = emailSender;
         }
         
         [BindProperty] public ShoppingCartVM ShoppingCartVm { get; set; }
@@ -199,6 +201,18 @@ namespace bookselling.Controllers
         // order confirm 
         public IActionResult OrderConfirmation(int id)
         {
+            var claimIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var emailDb = _db.ApplicationUsers.Find(claim.Value).Email;
+
+            MailContent content = new MailContent()
+            {
+                To = emailDb,
+                Subject = "Thanks for order",
+                Body = "<p>Order successfully!</p>"
+            };
+
+            _emailSender.SendMail(content);
             return View(id);
         }
     }

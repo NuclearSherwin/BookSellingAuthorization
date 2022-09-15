@@ -34,12 +34,15 @@ namespace bookselling.Utils
             builder.HtmlBody = mailContent.Body;
             email.Body = builder.ToMessageBody();
 
-            using var smtp = new SmtpClient();
+            using var smtp = new MailKit.Net.Smtp.SmtpClient(); 
 
             try
             {
                 smtp.Connect(_mailSetting.Host, _mailSetting.Post, SecureSocketOptions.StartTls);
                 smtp.Authenticate(_mailSetting.Mail, _mailSetting.Password);
+                
+                // send mail
+                await smtp.SendAsync(email);
             }
             catch (Exception ex)
             {
@@ -58,7 +61,7 @@ namespace bookselling.Utils
 
         public async Task SendMailAsync(string email, string subject, string htmlMessage)
         {
-            await SendMail(new MailContent
+            await SendMail(new MailContent()
             {
                 To = email,
                 Subject = subject,
