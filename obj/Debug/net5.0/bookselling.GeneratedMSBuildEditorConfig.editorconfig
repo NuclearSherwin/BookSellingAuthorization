@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = bookselling
-build_property.ProjectDir = /home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/
+build_property.ProjectDir = /home/phong/work/asp-dotnet-core-apps/BookSellingAuthorization/

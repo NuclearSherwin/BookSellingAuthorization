@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using bookselling.Data;
 using bookselling.DbInitializer;
+using bookselling.Utils;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -38,6 +39,11 @@ namespace bookselling
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddScoped<IDbInitializer, DbInitializer.DbInitializer>();
+            services.AddOptions();
+
+            var mailsettings = Configuration.GetSection("MailSetting");
+            services.Configure<MailSetting>(mailsettings);
+            services.AddTransient<ISendMailService, SendMailService>();
 
             services.ConfigureApplicationCookie(options =>
             {
@@ -52,6 +58,7 @@ namespace bookselling
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            
 
         }
 

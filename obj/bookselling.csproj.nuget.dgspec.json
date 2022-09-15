@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/bookselling.csproj": {}
+    "/home/phong/work/asp-dotnet-core-apps/BookSellingAuthorization/bookselling.csproj": {}
   },
   "projects": {
-    "/home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/bookselling.csproj": {
+    "/home/phong/work/asp-dotnet-core-apps/BookSellingAuthorization/bookselling.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/bookselling.csproj",
+        "projectUniqueName": "/home/phong/work/asp-dotnet-core-apps/BookSellingAuthorization/bookselling.csproj",
         "projectName": "bookselling",
-        "projectPath": "/home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/bookselling.csproj",
-        "packagesPath": "/home/phong-zorin/.nuget/packages/",
-        "outputPath": "/home/phong-zorin/work/dotnet-projects/BookSellingAuthorization/obj/",
+        "projectPath": "/home/phong/work/asp-dotnet-core-apps/BookSellingAuthorization/bookselling.csproj",
+        "packagesPath": "/home/phong/.nuget/packages/",
+        "outputPath": "/home/phong/work/asp-dotnet-core-apps/BookSellingAuthorization/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/phong-zorin/.nuget/NuGet/NuGet.Config"
+          "/home/phong/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -45,6 +45,10 @@
             "HeroiconsTagHelper": {
               "target": "Package",
               "version": "[1.0.6, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.4.0, )"
             },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
@@ -95,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/167/sdk/5.0.408/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.408/RuntimeIdentifierGraph.json"
         }
       }
     }
