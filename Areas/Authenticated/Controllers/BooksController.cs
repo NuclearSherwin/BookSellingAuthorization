@@ -36,7 +36,8 @@ namespace bookselling.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var books = _db.Books.Include(x => x.Category).ToList();
+            var books = _db.Books
+                .Include(x => x.Category).ToList();
             return View(books);
         }
 
@@ -103,7 +104,8 @@ namespace bookselling.Controllers
                 var extension = Path.GetExtension(files[0].FileName);
                 if (bookVm.Book.Id != 0)
                 {
-                    var productDb = _db.Books.AsNoTracking().Where(b => b.Id == bookVm.Book.Id).First();
+                    var productDb = _db.Books.AsNoTracking()
+                        .Where(b => b.Id == bookVm.Book.Id).First();
                     if (productDb.ImgPath != null && bookVm.Book.Id != 0)
                     {
                         var imagePath = Path.Combine(webRootPath, productDb.ImgPath.TrimStart('/'));
@@ -134,7 +136,7 @@ namespace bookselling.Controllers
             _db.SaveChanges();
 
             // provide data for the categories list
-            // bookVm.Categories = CategorySelectListItems();
+            // bookVm.;Categories = CategorySelectListItems();
 
             return RedirectToAction(nameof(Index));
         }
@@ -145,7 +147,8 @@ namespace bookselling.Controllers
             var categories = _db.Categories.ToList();
 
             // for each book
-            var result = categories.Select(c => new SelectListItem
+            var result = categories
+                .Select(c => new SelectListItem
             {
                 Text = c.Name,
                 Value = c.Id.ToString()

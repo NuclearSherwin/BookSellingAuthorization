@@ -62,7 +62,8 @@ namespace bookselling.Controllers
         // Plus
         public IActionResult Plus(int cartId)
         {
-            var cart = _db.Carts.Include(p => p.Book).FirstOrDefault(c => c.Id == cartId);
+            var cart = _db.Carts.Include(p => p.Book)
+                .FirstOrDefault(c => c.Id == cartId);
 
             cart.Count += 1;
             cart.Price = cart.Book.Price;
@@ -127,7 +128,8 @@ namespace bookselling.Controllers
             ShoppingCartVm = new ShoppingCartVM()
             {
                 OrderHeader = new Models.OrderHeader(),
-                ListCarts = _db.Carts.Where(u => u.CustomerId == claim.Value).Include(c => c.Book)
+                ListCarts = _db.Carts.Where(u => u.CustomerId == claim.Value)
+                    .Include(c => c.Book)
             };
 
             ShoppingCartVm.OrderHeader.ApplicationUser = _db.ApplicationUsers
@@ -201,14 +203,14 @@ namespace bookselling.Controllers
         // order confirm 
         public IActionResult OrderConfirmation(int id)
         {
-            var claimIdentity = (ClaimsIdentity)User.Identity;
+            var claimIdentity = (ClaimsIdentity) User.Identity;
             var claim = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
             var emailDb = _db.ApplicationUsers.Find(claim.Value).Email;
 
             MailContent content = new MailContent()
             {
                 To = emailDb,
-                Subject = "Thanks for order",
+                Subject = "Thanks for order! Let's explore more",
                 Body = "<p>Order successfully!</p>"
             };
 

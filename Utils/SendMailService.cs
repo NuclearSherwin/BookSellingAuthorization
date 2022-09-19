@@ -11,21 +11,22 @@ namespace bookselling.Utils
 {
     public class SendMailService : ISendMailService
     {
-        private readonly MailSetting _mailSetting;
+        private readonly MailSettings _mailSettings;
         private readonly ILogger<SendMailService> _logger;
 
-        public SendMailService(IOptions<MailSetting> mailSetting, ILogger<SendMailService> logger)
+        public SendMailService(IOptions<MailSettings> mailSetting, ILogger<SendMailService> logger)
         {
-            _mailSetting = mailSetting.Value;
+            _mailSettings = mailSetting.Value;
             _logger = logger;
             _logger.LogInformation("Create SendMailService");
         }
 
         public async Task SendMail(MailContent mailContent)
         {
+            
             var email = new MimeMessage();
-            email.Sender = new MailboxAddress(_mailSetting.DisplayName, _mailSetting.Mail);
-            email.From.Add(new MailboxAddress(_mailSetting.DisplayName, _mailSetting.Mail));
+            email.Sender = new MailboxAddress(_mailSettings.DisplayName, _mailSettings.Mail);
+            email.From.Add(new MailboxAddress(_mailSettings.DisplayName, _mailSettings.Mail));
             email.To.Add(MailboxAddress.Parse(mailContent.To));
             email.Subject = mailContent.Subject;
 
@@ -38,8 +39,8 @@ namespace bookselling.Utils
 
             try
             {
-                smtp.Connect(_mailSetting.Host, _mailSetting.Post, SecureSocketOptions.StartTls);
-                smtp.Authenticate(_mailSetting.Mail, _mailSetting.Password);
+                await smtp.ConnectAsync(_mailSettings.Host, _mailSettings.Post, SecureSocketOptions.StartTls);
+                await smtp.AuthenticateAsync(_mailSettings.Mail, _mailSettings.Password);
                 
                 // send mail
                 await smtp.SendAsync(email);

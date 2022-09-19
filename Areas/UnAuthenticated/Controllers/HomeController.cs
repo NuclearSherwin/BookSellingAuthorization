@@ -23,7 +23,8 @@ namespace bookselling.Controllers
         private readonly ApplicationDbContext _dbContext;
         private readonly int _recordsPerPage = 40;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbContext)
+        public HomeController(ILogger<HomeController> logger, 
+            ApplicationDbContext dbContext)
         {
             _logger = logger;
             _dbContext = dbContext;

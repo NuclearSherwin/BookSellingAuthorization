@@ -10,7 +10,8 @@ namespace bookselling.Models
         [Required] public int BookId { get; set; }
         [Required] public int Count { get; set; }
 
-        [ForeignKey("CustomerId")] private ApplicationUser ApplicationUser { get; set; }
+        [ForeignKey("CustomerId")] 
+        private ApplicationUser ApplicationUser { get; set; }
         [ForeignKey("BookId")] public Book Book { get; set; }
         [NotMapped] public double Price { get; set; }
 

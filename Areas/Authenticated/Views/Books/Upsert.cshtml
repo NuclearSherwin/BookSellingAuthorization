@@ -8,17 +8,12 @@
 <h1>@title</h1>
 <form method="post" asp-controller="Books" asp-action="Upsert" enctype="multipart/form-data">
     <input asp-for="Book.Id" class="form-control" hidden>
-    <div class="form-group">
-        <label>Image</label>
-        <input type="file" name="files" multiple class="form-control" value="@Model.Book.ImgPath">
-        <span asp-validation-for="Book.ImgPath" class="text-danger"></span>
-    </div>
     <div class="row justify-content-center">
-        <img src="@Model.Book.ImgPath" width="20%" style="border-radius: 5px" border: solid green/>
+        <img src="@Model.Book.ImgPath" width="20%" style="border-radius: 5px" border: solid green alt=""/>
     </div>
     <div class="mb-3">
         <label asp-for="Book.Name" class="form-label"></label>
-        <input asp-for="Book.Name" class="form-con  trol">
+        <input asp-for="Book.Name" class="form-control">
         <span asp-validation-for="Book.Name" class="text-danger"></span>
     </div>
     <div class="mb-3">
@@ -46,6 +41,11 @@
         @Html.DropDownListFor(b => b.Book.CategoryId, Model.Categories,
             "--select categories", new { @class = "form-control" })
         <span asp-validation-for="Book.CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Image</label>
+        <input type="file" name="file" multiple class="form-control" value="@Model.Book.ImgPath">
+        <span asp-validation-for="Book.ImgPath" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
 </form>

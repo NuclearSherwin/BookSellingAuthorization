@@ -1,6 +1,6 @@
 namespace bookselling.Utils
 {
-    public class MailSetting
+    public class MailSettings
     {
         public string Mail { get; set; }
         public string DisplayName { get; set; }

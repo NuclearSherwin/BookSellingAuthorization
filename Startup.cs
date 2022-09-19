@@ -43,7 +43,7 @@ namespace bookselling
             services.AddOptions();
 
             var mailsettings = Configuration.GetSection("MailSettings");
-            services.Configure<MailSetting>(mailsettings);
+            services.Configure<MailSettings>(mailsettings);
             services.AddTransient<ISendMailService, SendMailService>();
 
             services.ConfigureApplicationCookie(options =>
